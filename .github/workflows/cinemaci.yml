@@ -1,15 +1,12 @@
-name: PHP Syntax Check
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  syntax-check:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -18,11 +15,19 @@ jobs:
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "7.4" # เลือกเวอร์ชันของ PHP ที่คุณต้องการติดตั้ง
-          extensions: mbstring, zip # สามารถเพิ่มส่วนขยายเพิ่มเติมได้ตามต้องการ
+          php-version: "7.4"
+          extensions: mbstring, zip
 
       - name: Install PHP CodeSniffer
         run: composer global require "squizlabs/php_codesniffer=*"
 
       - name: Check PHP syntax
         run: php -l .
+
+      # Add additional steps for deployment
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: . # Directory to deploy, adjust as needed
+          publish_branch: gh-pages
