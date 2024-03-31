@@ -452,10 +452,6 @@ $result_movies = $conn->query($sql_movies);
         });
     </script>
 
-    <footer>
-        <p>&copy; S-Cinima - Naresuann</p>
-    </footer>
-
 </body>
 
 </html>
