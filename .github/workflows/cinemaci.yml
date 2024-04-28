@@ -24,15 +24,10 @@ jobs:
       - name: Check PHP syntax
         run: php -l .
 
+      # Add additional steps for deployment
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: . # Directory to deploy, adjust as needed
           publish_branch: gh-pages
-
-      - name: Create Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: my-artifact
-          path: ./path/to/artifact
