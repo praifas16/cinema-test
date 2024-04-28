@@ -8,7 +8,7 @@
         /* สไตล์ CSS ที่ใช้ในหน้า moviemore.php */
         body {
             background-color: ##f2f2ed;
-            color: #212121;
+            color: #000000;
             margin: 0;
             font-family: Arial, sans-serif;
         }
